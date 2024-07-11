@@ -3,6 +3,7 @@ layout: post
 title: An interesting Project - DNN Simulator
 date: 2021-12-19
 description: An interesting Project - DNN Simulator
+tags: twitter
 ---
 An interesting Project: DNN Simulator
 

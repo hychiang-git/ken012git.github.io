@@ -3,6 +3,7 @@ layout: post
 title: A New large-scale 3D LiDAR dataset from Apple
 date: 2022-01-09
 description: A New large-scale 3D LiDAR scanner-based dataset ARKitScenes from Apple
+tags: twitter
 ---
 A New large-scale 3D LiDAR dataset from Apple
 
