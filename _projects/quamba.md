@@ -10,11 +10,11 @@ category: research
 ---
 
 <div style="text-align: center;">
-    <p>(Under Reviewing, more details are coming soon...)</p>
+    <p>(Under reviewing, more details are coming soon...)</p>
 </div>
 
 
-<div class="authors"> <a href="https://hychiang.info">Hung-Yueh Chiang</a><sup><sub>*</sub>1</sup>, Chi-Chih Chang<sup><sub>*</sub>2</sup>, Natalia Frumkin<sup>1</sup>, Kai-Chiang Wu<sup>2</sup>, Diana Marculescu<sup>1</sup></div>
+<div class="authors"> <a href="https://hychiang.info">Hung-Yueh Chiang</a><sup><sub>*</sub>1</sup>, <a href="https://github.com/shadowpa0327">Chi-Chih Chang</a><sup><sub>*</sub>2</sup>, <a href="https://www.nfrumkin.com/">Natalia Frumkin</a><sup>1</sup>, <a href="https://people.cs.nycu.edu.tw/~kcw/">Kai-Chiang Wu</a><sup>2</sup>, <a href="https://users.ece.utexas.edu/~dianam/">Diana Marculescu</a><sup>1</sup></div>
 <div class="authors"> <sup>1</sup> The University of Texas at Austin, <sup>2</sup>National Yang Ming Chiao Tung University</div>
 <div style="text-align: center; font-family: Times;"> <sup>*</sup> Equal contribution</div>
 
