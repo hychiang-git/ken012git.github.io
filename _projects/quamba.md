@@ -39,6 +39,6 @@ category: research
 # Real-time Generation on a NVIDIA Orin Nano 8G
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/projects/quamba/quamba_demo.gif" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include gif.html path="assets/img/projects/quamba/quamba_demo.gif" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
