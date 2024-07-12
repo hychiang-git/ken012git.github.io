@@ -27,7 +27,7 @@ category: research
 <br>
 
 <div style="text-align: center;">
-    <p style="font-family: cursive;">
+    <p style="font-family: Comic Sans MS, Comic Sans, cursive;">
     :zap: <b>8-bit quantization (W8A8) for Mamba blocks </b> &nbsp; &nbsp;
     :rocket: <b>1.7 <span>&#215;</span> speedup on Orin Nano 8G </b> &nbsp; &nbsp;
     :small_red_triangle_down: <b>2<span>&#215;</span> memory reduction</b>
