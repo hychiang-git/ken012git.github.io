@@ -31,7 +31,7 @@ category: research
 <br>
 
 <div style="text-align: center;">
-    <p style="font-family: cursive; font-size:1.5rem">
+    <p style="font-family: Comic Neue; font-size:1.5rem">
     :rocket: Top performing method in 2019
     </p>
 </div>

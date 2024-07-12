@@ -31,7 +31,7 @@ category: research
 <br>
 
 <div style="text-align: center;">
-    <p style="font-family: cursive; font-size:1.5rem">
+    <p style="font-family: Comic Neue; font-size:1.5rem">
     :rocket: <b>1.5 <span>&#215;</span> less FLOPS </b> &nbsp; &nbsp;
     :small_red_triangle_down: <b>2<span>&#215;</span> memory reduction for Inverted Residual Blocks</b>
     </p>
