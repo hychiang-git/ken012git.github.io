@@ -18,7 +18,7 @@ category: research
 <sup>2</sup>A9/Amazon</div>
 
 <div style="text-align: center; padding-bottom: 0.9em;">
-<p style="font-size:1.1rem;">[<a href="https://github.com/ken012git/joint_point_based">code</a>] &nbsp; [<a href="https://www.youtube.com/watch?v=rqBcxw6iaD0">talk</a>]</p>
+<p style="font-size:1.1rem;">[<a href="https://github.com/hychiang-git/joint_point_based">code</a>] &nbsp; [<a href="https://www.youtube.com/watch?v=rqBcxw6iaD0">talk</a>]</p>
 </div>
 
 
