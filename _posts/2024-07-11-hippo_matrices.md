@@ -363,7 +363,6 @@ $$\begin{aligned}
     &= \frac{2n+1}{2}\int_{x=0}^{x=t} P_n(\frac{2x}{t}-1) P_m(\frac{2x}{t}-1) \frac{2}{t}dx \\
     &= (2n+1)\int_{x=0}^{x=t} P_n(\frac{2x}{t}-1) P_m(\frac{2x}{t}-1) \frac{1}{t}dx \\
     &= (2n+1) \int_{x=0}^{x=t} P_n(\frac{2x}{t}-1) P_m(\frac{2x}{t}-1) \frac{1}{2}\omega^{leg}(\frac{2x}{t}-1) \frac{1}{t} dx \\
-    % &= \frac{(2n+1)}{2} \int_{x=0}^{x=t} P_n(\frac{2x}{t}-1) P_m(\frac{2x}{t}-1) \omega^{leg}(\frac{2x}{t}-1) \frac{1}{t} dx \\
     &= \delta_{nm}
 \end{aligned}$$
 
