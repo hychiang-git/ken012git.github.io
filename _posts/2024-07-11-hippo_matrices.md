@@ -18,10 +18,10 @@ comments: true
   <li><a href="#introduction">Introduction</a></li>
   <li><a href="#derive-hippo-matrices">Derive HiPPO Matrices</a></li>
     <ul>
-        <li><a href="#backgroud-and-setup">Background and Setup</a></li>
+        <li><a href="#backgrouds">Backgrounds</a></li>
         <ul>
             <li><a href="#approximation">Approximation</a></li>
-            <li><a href="#orthogonal-polynomials-basis">Orthogonal Polynomial Basis</a></li>
+            <li><a href="#orthogonal-polynomial-basis">Orthogonal Polynomial Basis</a></li>
             <li><a href="#tilted-measure-and-basis">Tilted Measure and Basis</a></li>
         </ul>
         <li><a href="#the-projection-and-coefficients">The Projection and Coefficients</a></li>
@@ -45,7 +45,7 @@ comments: true
 <br>
 
 # Introduction
-This document provides the mathematic derivations of the HiPPO matrices that help readers understand the formulas. The contents are extracted and summarized from the original papers cited in <a href="#references">References</a>.
+This document provides the mathematic derivations of the HiPPO matrices that help readers understand the formulas. The contents are extracted and summarized from the original papers cited in <a href="#references">references</a>.
 
 <br>
 
@@ -55,7 +55,7 @@ The contents are extracted and summarized from the original paper [[1]](#1), but
 
 <br>
 
-## Background and Setup
+## Backgrounds
 
 HiPPO considers a linear time-invariant (LTI) ODEs such that
 
@@ -242,7 +242,7 @@ Using the result from the formula [[eq:1]](#eq:1), we have
 
 $$
 \label{approx_f}
-\tag{eq:approx_f}
+\tag{eq:3}
 \begin{aligned}
     c_n(t) &= \langle f(x)_{x \leq t}, {g_n}^{(t)} \rangle_{\nu^{(t)}} \\
     &= \int f \textcolor{red}{ {g_n}^{(t)} }  \frac{\omega^{(t)}}{\zeta(t)(\chi^{(t)})^2} \\
@@ -259,6 +259,8 @@ The function $$f$$ can be approximated by storing its coefficients with respect 
 At any time $$t$$, $$f(x)_{x \leq t}$$ can be explicitly reconstructed by using $$ c_n(t) = \langle f(x)_{x \leq t}, {g_n}^{(t)} \rangle_{\nu^{(t)}} $$ and the formula [[eq:2]](#eq:2), such that
 
 $$
+\label{reconstruct}
+\tag{eq:4}
 \begin{aligned}
     f(x)_{x \leq t} \approx {g}^{(t)} &= \sum_{n=0}^{N-1} \textcolor{red} { \langle f(x)_{x \leq t}, {g_n}^{(t)} \rangle_{\nu^{(t)}} } \frac{ {g_n}^{(t)} }{ {\left \lVert {g_n}^{(t)} \right \rVert }_{\nu^{(t)}}^2} \\
     &= \sum_{n=0}^{N-1} \textcolor{red}{c_n(t)} \frac{ {g_n}^{(t)} }{ \textcolor{green}{ {\left \lVert {g_n}^{(t)} \right \rVert }_{\nu^{(t)}}^2} } \\
@@ -313,7 +315,7 @@ the measure $$ \omega^{leg}=\boldsymbol{1}_{[-1, 1]}$$ and they satisfy
 
 $$
 \label{legendre}
-\tag{eq:3}
+\tag{eq:5}
 \begin{aligned}
     \frac{2n+1}{2}\int_{-1}^{1} P_n(x) P_m(x) dx = \delta_{mn}
 \end{aligned}
@@ -340,7 +342,7 @@ so called \"Pointwise evaluations\".
 
 
 <br>
-#### Shifted and Scaled Legendre polynomials
+#### Shifted and Scaled Legendre Polynomials
 
 The \"shifted\" Legendre polynomials are a set of functions analogous to
 the Legendre polynomials, but defined on the interval $$(0, 1)$$ [[5]](#5). They obey
@@ -351,7 +353,7 @@ $$\begin{aligned}
 \end{aligned}$$
 
 We will also consider scaling the Legendre polynomials to be orthogonal
-on the interval $$[0, t]$$. Let $$u=\frac{2x}{t}-1$$, and apply a change of variables from [[eq:3]](#eq:3)
+on the interval $$[0, t]$$. Let $$u=\frac{2x}{t}-1$$, and apply a change of variables from [[eq:5]](#eq:5)
 
 $$\begin{aligned}
     & \frac{2n+1}{2}\int_{u=-1}^{u=1} P_n(u) P_m(u) du \\
@@ -391,13 +393,13 @@ $$\begin{aligned}
 $$\omega_\theta= \frac{1}{ \theta}\boldsymbol{1}_{[t-\theta, t]}$$
 
 <br>
-#### Derivatives of Legendre polynomials
+#### Derivatives of Legendre Polynomials
 
 use the following recurrence relations (the integration of Legendre polynomial [[4]](#4))
 
 $$
 \label{legendre_recur_1}
-\tag{eq:4}
+\tag{eq:6}
 \begin{aligned}
     (2n+1)P_n &= P'_{n+1} - P'_{n-1}
 \end{aligned}
@@ -407,13 +409,13 @@ and
 
 $$
 \label{legendre_recur_2}
-\tag{eq:5}
+\tag{eq:7}
 \begin{aligned}
     P'_{n+1} &= (n+1)P_n + xP'_n
 \end{aligned}
 $$
 
-The first equation [[eq:4]](#eq:4) yields 
+The first equation [[eq:6]](#eq:6) yields 
 
 $$\begin{aligned}[c]
     P'_{n+1} &= (2\mathbf{n}+1)P_\mathbf{n} + \textcolor{red}{P'_{n-1}} \\
@@ -441,7 +443,7 @@ where the sum stops at $$P_0$$ or $$P_1$$. By summing $$P'_{n+1} + P'_n $$, we h
 
 $$\begin{aligned}
     & P'_{n+1} +  P'_n = \textcolor{red}{(2n+1)P_n} + (2n-1)P_{n-1}+ (2n-3)P_{n-2} + (2n-5)P_{n-3} + (2n-7)P_{n-4} ... \\
-    & P'_{n+1} +  P'_n = \textcolor{red}{nP_n + (n+1)P_n} + (2n-1)P_{n-1}+ (2n-3)P_{n-2} + (2n-5)P_{n-3} + (2n-7)P_{n-4} ... \text{ (using eq:5)}\\
+    & P'_{n+1} +  P'_n = \textcolor{red}{nP_n + (n+1)P_n} + (2n-1)P_{n-1}+ (2n-3)P_{n-2} + (2n-5)P_{n-3} + (2n-7)P_{n-4} ... \text{ (using eq:7)}\\
     & P'_{n+1} +  P'_n = nP_n + \textcolor{green}{P'_{n+1} - xP'_n} + (2n-1)P_{n-1}+ (2n-3)P_{n-2} + (2n-5)P_{n-3} + (2n-7)P_{n-4} ... \\
     &  P'_n \textcolor{green}{+ xP'_n} = nP_n + (2n-1)P_{n-1}+ (2n-3)P_{n-2} + (2n-5)P_{n-3} + (2n-7)P_{n-4} ... \\
 \end{aligned}
@@ -452,13 +454,13 @@ Therefore, we have
 
 $$
 \label{legendre_result}
-\tag{eq:6}
+\tag{eq:8}
 \begin{aligned}
     (x+1)P'_n(x) &= nP_n + (2n-1)P_{n-1}+ (2n-3)P_{n-2} + (2n-5)P_{n-3} + (2n-7)P_{n-4} ... \\
 \end{aligned}
 $$
 
-We will use the result [[eq:6]](#eq:6) to derive HiPPO-LegS.
+We will use the result [[eq:8]](#eq:8) to derive HiPPO-LegS.
 
 <br>
 #### Derive HiPPO-LegS
@@ -475,7 +477,7 @@ where $$P_n$$ are the basic Legendre polynomials.
 Since the basis functions $$g_n(t, x)$$ are orthonormal with respect to the measure, we have the tiling function
 $$\chi(t, x) = 1$$ (no tilting), $$\zeta(t, x) = 1$$, $$\lambda_n=1$$
 
-Pug $$\chi, \zeta, \lambda_n$$ into [[eq:approx_f]](#eq:approx_f), we have
+Plug $$\chi, \zeta, \lambda_n$$ into [[eq:3]](#eq:3), we have
 
 $$\begin{aligned}
     c_n(t) &= \zeta(t)^{-\frac{1}{2}} \lambda_n \int f {p_n}^{(t)}\frac{\omega^{(t)}}{\chi^{(t)}} =  \int f {p_n}^{(t)} \omega^{(t)}
@@ -493,7 +495,7 @@ $$\begin{aligned}
 \end{aligned}$$ 
 
 Now define $$z = \frac{2x}{t} - 1$$ and apply the
-result of derivatives of Legendre polynomials in the equation [[eq:6]](#eq:6). 
+result of derivatives of Legendre polynomials in the equation [[eq:8]](#eq:8). 
 
 $$\begin{aligned}
     \frac{\partial}{\partial t} g_n(t, x) &= -(2n+1)^{\frac{1}{2}}t^{-1} (z+1) {P'}_n(z) \\
@@ -576,6 +578,8 @@ M_{nk} &=
 
 - **HiPPO-LegS Reconstruction**
 
+Plug $$\chi, \zeta, \lambda_n$$ into [[eq:4]](#eq:4), we have
+
 $$\begin{aligned}
     f(x)_{x \leq t} \approx {g}^{(t)} &= \sum_{n=0}^{N-1} \lambda_n^{-1} \zeta^{\frac{1}{2}} c_n(t) {p_n}^{(t)} \chi^{(t)} \\
     &= \sum_{n=0}^{N-1} c_n(t) {p_n}^{(t)} = \sum_{n=0}^{N-1} c_n(t) {g_n}(t, x)\\
@@ -589,7 +593,7 @@ $$\begin{aligned}
 
 <a id="1">[1]</a> 
 A. Gu, T. Dao, S. Ermon, A. Rudra, and C. Ré, “Hippo: Recurrent memory with optimal
-polynomial projections,” Advances in neural information processing systems, vol. 33, pp. 1474–
+polynomial projections,” Advances in Neural Information Processing Systems, vol. 33, pp. 1474–
 1487, 2020.
 
 <a id="2">[2]</a> 

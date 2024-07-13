@@ -17,6 +17,16 @@ comments: true
 <ul style="font-size:1.4em">
   <li><a href="#introduction">Introduction</a></li>
   <li><a href="#continuous-state-space-model">Continuous State Space Model</a></li>
+  <li><a href="#discretize-continuous-state-space-model">Discretize Continuous State Space Model</a></li>
+  <ul>
+    <li><a href="#bilinear-transform">Bilinear Transform</a></li>
+    <li><a href="#zero-order-hold-transform">Zero-order Hold Transform</a></li>
+  </ul>
+  <li><a href="#discrete-time-state-space-model">Discrete-time State Space Model</a></li>
+  <ul>
+    <li><a href="#convolution-form<">Convolution Form</a></li>
+    <li><a href="#parallel-associative-scan">Parallel Associative Scan</a></li>
+  </ul>
   <li><a href="#references">References</a></li>
 </ul>
 </details>
@@ -24,7 +34,7 @@ comments: true
 <br>
 
 # Introduction
-This document provides the mathematic derivations of the HiPPO matrices that help readers understand the formulas. The contents are extracted and summarized from the original papers cited in <a href="#references">References</a>.
+This document provides the mathematic derivations of the State Space Models that help readers understand the formulas. The contents are extracted and summarized from the original papers cited in <a href="#references">references</a>.
 
 <br>
 
@@ -78,27 +88,22 @@ which are:
 
 The general formulation of an ODE is
 $$\begin{aligned}
-    \frac{d}{dt}c(t) = f(t, c(t))
-\end{aligned}$$
-where
-$$\begin{aligned}
-    \frac{d}{dt}c(t) = A c(t) + Bf(t).
+    \frac{d}{dt}h(t) = A h(t) + B x(t).
 \end{aligned}
 $$
 
 From the differential equation, we have $$\begin{aligned}
-    c(t+\Delta t) - c(t) = \int_{t}^{t+\Delta t} f(s, c(s))ds .
+    h(t+\Delta t) - h(t) = \int_{s=t}^{s=t+\Delta t} A h(s) + B x(s)ds .
 \end{aligned}$$
 
 ## Bilinear Transform
 
-By the definition of the integral rule, we have 
+By the Trapezoidal rule, we have 
 
 $$
 \begin{aligned}
-    c(t+\Delta t) - c(t) &= \Delta t \frac{f(t, c(t)) - f(t+\Delta t, c(t+\Delta t))}{2} \\
-    &= \frac{\Delta t}{2} (Ac(t) + Bf(t) + Ac(t+\Delta t) + Bf(t+\Delta t)) \\
-    &= \frac{\Delta t}{2} Ac(t) + \frac{\Delta t}{2}Bf(t) + \frac{\Delta t}{2}Ac(t+\Delta t) + \frac{\Delta t}{2}Bf(t+\Delta t)
+    h(t+\Delta t) - h(t) &= \Delta t \frac{(Ah(t) + Bx(t) + Ah(t+\Delta t) + B x(t+\Delta t))}{2} \\
+    &= \frac{\Delta t}{2} Ah(t) + \frac{\Delta t}{2}Bx(t) + \frac{\Delta t}{2}Ah(t+\Delta t) + \frac{\Delta t}{2}Bx(t+\Delta t)
 \end{aligned}
 $$
 
@@ -106,17 +111,17 @@ By combining the terms, we have
 
 $$
 \begin{aligned}
-    c(t+\Delta t) - \frac{\Delta t}{2}Ac(t+\Delta t) &= c(t) + \frac{\Delta t}{2} Ac(t) + \frac{\Delta t}{2}Bf(t) +  + \frac{\Delta t}{2}Bf(t+\Delta t) \\
-    ( \mathbf{I} - \frac{\Delta t}{2}A)c(t+\Delta t) &= ( \mathbf{I}+ \frac{\Delta t}{2} A)c(t)  + \frac{\Delta t}{2} B(f(t) +  + f(t+\Delta t)) \\
-    c(t+\Delta t) &= ( \mathbf{I} - \frac{\Delta t}{2}A)^{-1} ( \mathbf{I}+ \frac{\Delta t}{2} A) c(t) + \frac{\Delta t}{2} ( \mathbf{I} - \frac{\Delta t}{2}A)^{-1} B (f(t) +  f(t+\Delta t))
+    \textcolor{red}{h(t+\Delta t)} - \frac{\Delta t}{2}A\textcolor{red}{h(t+\Delta t)} &= \textcolor{green}{h(t)} + \frac{\Delta t}{2} A \textcolor{green}{h(t)} + \textcolor{blue}{\frac{\Delta t}{2}B} x(t) + \textcolor{blue}{\frac{\Delta t}{2}B} x(t+\Delta t) \\
+    ( \mathbf{I} - \frac{\Delta t}{2}A)h(t+\Delta t) &= ( \mathbf{I}+ \frac{\Delta t}{2} A)h(t)  + \frac{\Delta t}{2} B(x(t) + x(t+\Delta t)) \\
+    h(t+\Delta t) &= ( \mathbf{I} - \frac{\Delta t}{2}A)^{-1} ( \mathbf{I}+ \frac{\Delta t}{2} A) h(t) + \frac{\Delta t}{2} ( \mathbf{I} - \frac{\Delta t}{2}A)^{-1} B (x(t) +  x(t+\Delta t))
 \end{aligned}
 $$
 
-Since $$f$$ is the constant and does no involve in the
-integral, we have $$f(t) = f(t+\Delta t)$$ 
+Since $$x$$ is the constant and does no involve in the
+integral, we have $$x(t) = x(t+\Delta t)$$ 
 
 $$\begin{aligned}
-    c(t+\Delta t) &= ( \mathbf{I} - \frac{\Delta t}{2}A)^{-1} ( \mathbf{I}+ \frac{\Delta t}{2} A) c(t) + \Delta t ( \mathbf{I} - \frac{\Delta t}{2} A)^{-1} B f(t+\Delta t)
+    h(t+\Delta t) &= ( \mathbf{I} - \frac{\Delta t}{2}A)^{-1} ( \mathbf{I}+ \frac{\Delta t}{2} A) h(t) + \Delta t ( \mathbf{I} - \frac{\Delta t}{2} A)^{-1} B x(t+\Delta t)
 \end{aligned}
 $$
 
@@ -124,16 +129,21 @@ We can replace $$\frac{1}{2}$$ with a variable $$\alpha$$, so that we have
 Generalized Bilinear Transformation (GBT). 
 
 $$\begin{aligned}
-    c(t+\Delta t) &= ( \mathbf{I} - \Delta t \alpha A)^{-1} ( \mathbf{I}+ \Delta t \alpha A) c(t) + \Delta t ( \mathbf{I} - \Delta t \alpha A)^{-1} B f(t+\Delta t)
+    h(t+\Delta t) &= \textcolor{red}{( \mathbf{I} - \Delta t \alpha A)^{-1} ( \mathbf{I}+ \Delta t \alpha A)} h(t) + \textcolor{green}{\Delta t ( \mathbf{I} - \Delta t \alpha A)^{-1} B} x(t+\Delta t)
 \end{aligned}$$
 
-We can write the discretized formula from the result with discretized
-matrices $$\overline{A}, \overline{B}$$ 
+We can write the discretized state space model as 
 
 $$\begin{aligned}
-    c[t+1]  &= \overline{A} c[t] + \overline{B} f[t+1] \\
-    \overline{A} &= (\mathbf{I} - \Delta t \alpha A)^{-1} ( \mathbf{I}+ \Delta t \alpha A) \\
-    \overline{B} &= \Delta t ( \mathbf{I} - \Delta t \alpha A)^{-1} B
+    h[t+1]  &= \overline{A} h[t] + \overline{B} x[t+1] \\
+    y[t+1]    &= Ch[t+1]+Dx[t+1]
+\end{aligned}$$
+
+where $$\overline{A}, \overline{B}$$  are discretized matrices 
+
+$$\begin{aligned}
+    \overline{A} &= \textcolor{red}{(\mathbf{I} - \Delta t \alpha A)^{-1} ( \mathbf{I}+ \Delta t \alpha A)} \\
+    \overline{B} &= \textcolor{green}{\Delta t ( \mathbf{I} - \Delta t \alpha A)^{-1} B}
 \end{aligned}$$
 
 <br>
@@ -141,35 +151,49 @@ $$\begin{aligned}
 
 #### State solution
 
-We derive the state solution from the continuous time-invariant dynamic equation 
+We derive the state solution from the continuous time-invariant dynamic equation  $$\frac{d}{dt}h(t) = A h(t) + Bx(t)$$ 
+and move $$A h(t)$$ to the left-hand side
 
 $$\begin{aligned}
-    \frac{d}{dt}c(t) &= A c(t) + Bf(t) \\
-    \frac{d}{dt}c(t) &- A c(t) =  Bf(t) .
+    \textcolor{red}{ \frac{d}{dt}h(t) - A h(t) } =  Bx(t) .
 \end{aligned}$$ 
 
-Using the fact $$\begin{aligned}
-    \frac{d}{dt}[e^{-At}c(t)] = e^{-At} \frac{d}{dt}c(t) - e^{-At} A c(t) = e^{-At} [ \frac{d}{dt}c(t) - A c(t) ]
-\end{aligned}$$ , we have 
+Using the fact 
 
 $$\begin{aligned}
-    \frac{d}{dt}[e^{-At}c(t)] = e^{-At} Bf(t) \\
+    \textcolor{red}{\frac{d}{dt}[e^{-At}h(t)]} = e^{-At} \frac{d}{dt}h(t) - e^{-At} A h(t) = \textcolor{green}{e^{-At}} [ \textcolor{red}{\frac{d}{dt}h(t) - A h(t)} ]
+\end{aligned}$$ 
+
+, we have 
+
+$$\begin{aligned}
+    \textcolor{red}{\frac{d}{dt}[e^{-At}h(t)]} = \textcolor{green}{e^{-At}} Bx(t) \\
 \end{aligned}$$ 
 
 We integrate the both side from $$0$$ to $$t$$
 
 $$\begin{aligned}
-    \int_0^t \frac{d}{d \tau}[e^{-A\tau}c(\tau)] d\tau = e^{-At}c(t) - c(0) = \int_0^t e^{-A\tau} Bf(\tau) d \tau
+    \int_0^t \frac{d}{d \tau}[e^{-A\tau}h(\tau)] d\tau = \textcolor{red}{e^{-At}h(t) - h(0) = \int_0^t e^{-A\tau} Bx(\tau) d \tau} \\
+\end{aligned}$$ 
+
+and move $$h(0)$$ to the right-hand side
+
+$$\begin{aligned}
+    e^{-At}h(t) = h(0) + \int_0^t e^{-A\tau} Bx(\tau) d \tau
 \end{aligned}$$ 
 
 After multiplying $$e^{At}$$ on both sides, we have the
 state solution 
 
-$$\begin{aligned}
-    c(t) = e^{At}c(0) + \int_0^t e^{A(t-\tau)} Bf(\tau) d \tau
-\end{aligned}$$ 
+$$
+\label{state_solution}
+\tag{eq:1}
+\begin{aligned}
+    h(t) = e^{At}h(0) + \int_0^t e^{A(t-\tau)} Bx(\tau) d \tau
+\end{aligned}
+$$ 
 
-Note that $$\int_0^t e^{A(t-\tau)} Bf(\tau) d \tau$$ is a
+Note that $$\int_0^t e^{A(t-\tau)} Bx(\tau) d \tau$$ is a
 convolution, which can be done efficiently by multiplying the scalars in
 the frequency domain. We will use this result to derive the Zero-order
 Hold discretization.
@@ -181,43 +205,62 @@ We first define the relationship between discretized signals and
 continuous signals. 
 
 $$\begin{aligned}
-    c[k] := c(k\Delta t), \quad \text{and} \quad f[k] := f(k\Delta t)
+    h[k] := h(k\Delta t), \quad \text{and} \quad x[k] := x(k\Delta t)
 \end{aligned}$$
 
-where $$c[x]$$ and $$f[k]$$ is a zero-order transformed
-signals from $$c(x)$$ and $$f(x)$$ with a sampling step $$k$$.
+where $$h[x]$$ and $$c[k]$$ is a zero-order transformed
+signals from $$h(x)$$ and $$x(x)$$ with a sampling step $$k$$.
 
-Then, we have 
+Then using [[eq:1]](#eq:1), we have 
 
 $$\begin{aligned}
-    c[k+1] &:= c((k+1)\Delta t) \\
-    &= e^{A(k+1)\Delta t}c(0) + \int_0^{(k+1)\Delta t} e^{A((k+1)\Delta t-\tau)} Bf(\tau) d \tau \\
-    &= e^{A(k+1)\Delta t}c(0) + \int_0^{k\Delta t} e^{A((k+1)\Delta t-\tau)} Bf(\tau) d \tau + \int_{k\Delta t}^{(k+1)\Delta t} e^{A((k+1)\Delta t-\tau)} Bf(\tau) d \tau \\
-    &= e^{A\Delta t}e^{Ak\Delta t}c(0) + \int_0^{k\Delta t} e^{A\Delta t}e^{A(k\Delta t-\tau)} Bf(\tau) d \tau + \int_{k\Delta t}^{(k+1)\Delta t} e^{A((k+1)\Delta t-\tau)} Bf(\tau) d \tau \\
-    &= e^{A\Delta t}\left(e^{Ak\Delta t}c(0) + \int_0^{k\Delta t} e^{A(k\Delta t-\tau)} Bf(\tau) d \tau \right) + \int_{k\Delta t}^{(k+1)\Delta t} e^{A((k+1)\Delta t-\tau)} Bf(\tau) d \tau \\
-    &= e^{A\Delta t} c(k\Delta t) + \int_{k\Delta t}^{(k+1)\Delta t} e^{A((k+1)\Delta t-\tau)} Bf(\tau) d \tau \\
-    &= e^{A\Delta t} c[k] + e^{A((k+1)\Delta t} B \int_{k\Delta t}^{(k+1)\Delta t} e^{-A\tau} f(\tau) d \tau \\
-    &= e^{A\Delta t} c[k] + e^{A((k+1)\Delta t} B (-A^{-1}e^{-A\tau}\Big|_{k\Delta t}^{(k+1)\Delta t})f((k+1)\Delta t) \\
-    &= e^{A\Delta t} c[k] + e^{A((k+1)\Delta t} B (-A^{-1}e^{-A(k+1)\Delta t} + A^{-1}e^{-A k\Delta t}) f((k+1)\Delta t) \\
-&= e^{A\Delta t} c[k] + BA^{-1} (-\mathbf{I} + e^{A \Delta t}) f[k+1] \\
-&= e^{A\Delta t} c[k] + \frac{\Delta t B}{\Delta t 
- A} (e^{A \Delta t} - \mathbf{I}) f[k+1] \\
+    h[k+1] &:= h(\textcolor{red}{(k+1)\Delta t}) \\
+    &= e^{A\textcolor{red}{(k+1)\Delta t}}h(0) + \int_0^{\textcolor{red}{(k+1)\Delta t}} e^{A(\textcolor{red}{(k+1)\Delta t}-\tau)} Bx(\tau) d \tau \\
+    &= e^{A(k+1)\Delta t}h(0) + \int_{\textcolor{green}{0}}^{\textcolor{green}{k\Delta t}} e^{A((k+1)\Delta t-\tau)} Bx(\tau) d \tau + \int_{\textcolor{green}{k\Delta t}}^{\textcolor{green}{(k+1)\Delta t}} e^{A((k+1)\Delta t-\tau)} Bx(\tau) d \tau \\
+    &= \textcolor{red}{e^{A\Delta t}}e^{Ak\Delta t}h(0) + \int_0^{k\Delta t} \textcolor{red}{e^{A\Delta t}} e^{A(k\Delta t-\tau)} Bx(\tau) d \tau + \int_{k\Delta t}^{(k+1)\Delta t} e^{A((k+1)\Delta t-\tau)} Bx(\tau) d \tau \\
+    &= e^{A\Delta t}\left( \textcolor{green}{ e^{Ak\Delta t}h(0) + \int_0^{k\Delta t} e^{A(k\Delta t-\tau)} Bx(\tau) d \tau} \right) + \int_{k\Delta t}^{(k+1)\Delta t} e^{A((k+1)\Delta t-\tau)} Bx(\tau) d \tau \\
+    &= e^{A\Delta t} \textcolor{green}{h(k\Delta t)} + \int_{k\Delta t}^{(k+1)\Delta t} e^{A((k+1)\Delta t-\tau)} Bx(\tau) d \tau \\
+    &= e^{A\Delta t} h[k] + e^{A((k+1)\Delta t} B \textcolor{red}{\int_{k\Delta t}^{(k+1)\Delta t} e^{-A\tau} x(\tau) d \tau} \\
+    &= e^{A\Delta t} h[k] + e^{A((k+1)\Delta t} B (\textcolor{red}{-A^{-1}e^{-A\tau}\Big|_{k\Delta t}^{(k+1)\Delta t}})x((k+1)\Delta t) \\
+    &= e^{A\Delta t} h[k] + e^{A((k+1)\Delta t} B (\textcolor{red}{-A^{-1}e^{-A(k+1)\Delta t} + -A^{-1}e^{-A k\Delta t}}) x((k+1)\Delta t) \\
+    &= e^{A\Delta t} h[k] + e^{A((k+1)\Delta t} B (\textcolor{red}{-A^{-1}})(e^{-A(k+1)\Delta t} + e^{-A k\Delta t}) x((k+1)\Delta t) \\
+    &= e^{A\Delta t} h[k] + \textcolor{green}{e^{A((k+1)\Delta t}} B (-A^{-1}) (\textcolor{green}{e^{-A(k+1)\Delta t} + e^{-A k\Delta t}}) x((k+1)\Delta t) \\
+    &= e^{A\Delta t} h[k] + BA^{-1} (\textcolor{green}{-\mathbf{I} + e^{A \Delta t}}) x[k+1] \\
+    &= \textcolor{red}{e^{A\Delta t}} h[k] + \textcolor{green}{\frac{\Delta t B}{\Delta t A} (e^{A \Delta t} - \mathbf{I})} x[k+1] \\
 \end{aligned}$$
 
-Note that $$f$$ is constant from $$k\Delta t$$ to $$(k+1)\Delta t$$ and equal
-to $$f(k\Delta t) = f((k+1)\Delta t)$$
+Note that $$x$$ is constant from $$k\Delta t$$ to $$(k+1)\Delta t$$, and thereby $$x(k\Delta t) = x((k+1)\Delta t)$$
 
-We can write the discretized formula from the result with discretized
-matrices $$\overline{A}, \overline{B}$$ 
+We can write the discretized state space model as 
 
 $$\begin{aligned}
-    c[t+1]  &= \overline{A} c[t] + \overline{B} f[t+1] \\
-    \overline{A} &= e^{A\Delta t} \\
-    \overline{B} &= {(\Delta t 
- A)}^{-1} (e^{A \Delta t} - \mathbf{I}) \Delta t B
+    h[t+1]  &= \overline{A} h[t] + \overline{B} x[t+1] \\
+    y[t+1]    &= Ch[t+1]+Dx[t+1]
 \end{aligned}$$
 
-# Discrete-time State Space model
+where $$\overline{A}, \overline{B}$$  are discretized matrices 
+
+$$\begin{aligned}
+    \overline{A} &= \textcolor{red}{e^{A\Delta t}} \\
+    \overline{B} &= \textcolor{green}{ {(A \Delta t)}^{-1} (e^{A \Delta t} - \mathbf{I}) \Delta t B}
+\end{aligned}$$
+
+We can perform an Euler approximation to simplify $$B$$.
+The first-order Taylor expansion of $$e^{A \Delta t}$$ around zero is given by:
+
+$$\begin{aligned}
+e^{A \Delta t} \approx I + A \Delta t
+\end{aligned}$$
+
+Therefore, we have
+
+$$\begin{aligned}
+    \overline{B} &= {(A \Delta t)}^{-1} (\textcolor{red}{e^{A \Delta t}} - \mathbf{I}) \Delta t B
+    \approx {(A \Delta t)}^{-1} (\textcolor{red}{I + A \Delta t} - \mathbf{I}) \Delta t B =  \Delta t B
+\end{aligned}$$
+
+
+# Discrete-time State Space Model
 
 We can write the continuous-time state space model 
 
@@ -244,50 +287,50 @@ $$\begin{aligned}[c]
 \begin{aligned}[c]
 &\text{ZOH:}\\
 \overline{A} &= e^{A\Delta t}\\
-\overline{B} &= {(\Delta t A)}^{-1} (e^{A \Delta t} - \mathbf{I}) \Delta t B\\
+\overline{B} &= {(\Delta t A)}^{-1} (e^{A \Delta t} - \mathbf{I}) \Delta t B \approx \Delta t B\\
 \end{aligned}$$
 
 <br>
 ## Convolution Form
 
-Letting $$x_{-1} = 0$$ and unrolling the $$y_k$$ 
+Letting $$h_{-1} = 0$$ and unrolling the $$y_k$$ 
 
 $$\begin{aligned}[c]
 &\text{t=0}\\
-x_0 &= \overline{B}u_0\\
-y_0 &= C\overline{B}u_0 + Du_0\\
+h_0 &= \overline{B}x_0\\
+y_0 &= C\overline{B}x_0 + Dx_0\\
 \end{aligned}
 \quad
 \begin{aligned}[c]
 &\text{t=1}\\
-x_1 &= \overline{A}\overline{B}u_0 + \overline{B}u_1\\
-y_1 &= C\overline{A}\overline{B}u_0 + C\overline{B}u_1 + Du_1\\
+h_1 &= \overline{A}\overline{B}x_0 + \overline{B}x_1\\
+y_1 &= C\overline{A}\overline{B}x_0 + C\overline{B}x_1 + Dx_1\\
 \end{aligned}
 \quad
 \begin{aligned}[c]
 &\text{t=2}\\
-x_2 &= \overline{A}^2\overline{B}u_0 + \overline{A}\overline{B}u_1 + \overline{B}u_2\\
-y_2 &= C\overline{A}^2\overline{B}u_0 + C\overline{A}\overline{B}u_1 + C\overline{B}u_2 + Du_2\\
+h_2 &= \overline{A}^2\overline{B}x_0 + \overline{A}\overline{B}x_1 + \overline{B}x_2\\
+y_2 &= C\overline{A}^2\overline{B}x_0 + C\overline{A}\overline{B}x_1 + C\overline{B}x_2 + Dx_2\\
 \end{aligned}$$ 
 
 Therefore, when $$t=k$$ 
 
 $$\begin{aligned}
-x_k &= \overline{A}^k\overline{B}u_0 +...+ \overline{A}\overline{B}u_1 + \overline{B}u_2\\
-y_k &= C\overline{A}^k\overline{B}u_0 + C\overline{A}^{k-1}\overline{B}u_1 +...+ C\overline{B}u_k + Du_k \\
+h_k &= \overline{A}^k\overline{B}x_0 +...+ \overline{A}\overline{B}x_1 + \overline{B}x_2\\
+y_k &= C\overline{A}^k\overline{B}x_0 + C\overline{A}^{k-1}\overline{B}x_1 +...+ C\overline{B}x_k + Dx_k \\
 \end{aligned}$$
 
-In other words, equation (4) is a single (non-circular) convolution
+In other words, $$y_t$$ is a single (non-circular) convolution
 
 $$\begin{aligned}
-y_t = \sum_{\tau=0}^k \overline{C}\overline{A}^{\tau}\overline{B} u_{t-\tau}  + Du_t
+y_t = \sum_{\tau=0}^k \overline{C}\overline{A}^{\tau}\overline{B} x_{t-\tau}  + Dx_t
 \end{aligned}$$
 
 which can be computed very efficiently with FFTs,
-provided that K is known. 
+provided that $$\overline{K}$$ is known. 
 
 $$\begin{aligned}
-    y_t = \overline{K} \ast u + Du_t
+    y_t = \overline{K} \ast x + Dx_t
 \end{aligned}$$
 where 
 $$\begin{aligned}
@@ -299,34 +342,35 @@ $$\begin{aligned}
 
 Consider an example for illustrating a parallel associative scan (or
 parallel prefix sum/scan): $$\begin{aligned}
-    x_t  &= \overline{A} x_{t-1} + \overline{B} u_t \\
+    h_t  &= \overline{A} h_{t-1} + \overline{B} x_t \\
 \end{aligned}$$ 
 
-We unroll the recursive equation with $$x_0 = 0$$.
+We unroll the recursive equation with $$h_0 = 0$$.
 
 $$\begin{aligned}
-    x_1  &= \overline{B} u_1 \\
-    x_2  &= \overline{A} x_1 + \overline{B} u_2 = \overline{A}\overline{B} u_1 + \overline{B} u_2\\
-    x_3  &= \overline{A} x_2 + \overline{B} u_3 = \overline{A}(\overline{A}\overline{B} u_1 + \overline{B} u_2) + \overline{B} u_3 = \overline{A}^2\overline{B} u_1 + \overline{A}\overline{B} u_2 + \overline{B} u_3\\
-    x_4  &= \overline{A} x_3 + \overline{B} u_4 = \overline{A}(\overline{A}^2\overline{B} u_1 + \overline{A}\overline{B} u_2 + \overline{B} u_3) + \overline{B} u_4 = \overline{A}^3\overline{B} u_1 + \overline{A}^2\overline{B} u_2 + \overline{A}\overline{B} u_3 + \overline{B} u_4\\
+    h_1  &= \overline{B} x_1 \\
+    h_2  &= \overline{A} h_1 + \overline{B} x_2 = \overline{A}\overline{B} x_1 + \overline{B} x_2\\
+    h_3  &= \overline{A} h_2 + \overline{B} x_3 = \overline{A}(\overline{A}\overline{B} x_1 + \overline{B} x_2) + \overline{B} x_3 = \overline{A}^2\overline{B} x_1 + \overline{A}\overline{B} x_2 + \overline{B} x_3\\
+    h_4  &= \overline{A} h_3 + \overline{B} x_4 = \overline{A}(\overline{A}^2\overline{B} x_1 + \overline{A}\overline{B} x_2 + \overline{B} x_3) + \overline{B} x_4 = \overline{A}^3\overline{B} x_1 + \overline{A}^2\overline{B} x_2 + \overline{A}\overline{B} x_3 + \overline{B} x_4\\
 \end{aligned}$$
 
-Define an operand $$e_i = (\overline{A}, \overline{B}u_i)$$ and operator
+Define an operand $$e_i = (\overline{A}, \overline{B}x_i)$$ and operator
 $$e_i \cdot e_j$$ for parallel associative scan such that
 
 $$\begin{aligned}
-e_1 \cdot e_2 &= (\overline{A}, \overline{B}u_1) \cdot (\overline{A}, \overline{B}u_2) = (\overline{A}^2, \overline{A}\overline{B}u_1 + \overline{B}u_2) = (\overline{A}^2, x_2) \\
-e_1 \cdot e_2 \cdot e_3 &= (\overline{A}^2, \overline{A}\overline{B}u_1 + \overline{B}u_2) \cdot (\overline{A}, \overline{B}u_3) = (\overline{A}^3, \overline{A}^2\overline{B} u_1 + \overline{A}\overline{B} u_2 + \overline{B} u_3) = (\overline{A}^2, x_3) \\
+e_1 \cdot e_2 &= (\overline{A}, \overline{B}x_1) \cdot (\overline{A}, \overline{B}x_2) = (\overline{A}^2, \overline{A}\overline{B}x_1 + \overline{B}x_2) = (\overline{A}^2, h_2) \\
+e_1 \cdot e_2 \cdot e_3 &= (\overline{A}^2, \overline{A}\overline{B}x_1 + \overline{B}x_2) \cdot (\overline{A}, \overline{B}x_3) = (\overline{A}^3, \overline{A}^2\overline{B} x_1 + \overline{A}\overline{B} x_2 + \overline{B} x_3) = (\overline{A}^2, h_3) \\
 \end{aligned}$$ 
 
 Therefore, we can parallelize the computation with a
-parallel associative scan into a tree structure, for example, $$x_4$$ can
+parallel associative scan into a tree structure, for example, $$h_4$$ can
 be computed by 
 
 $$\begin{aligned}
-(e_1 \cdot e_2) \cdot (e_3 \cdot e_4) &=  (\overline{A}^2, \overline{A}\overline{B}u_1 + \overline{B}u_2) \cdot  (\overline{A}^2, \overline{A}\overline{B}u_3 + \overline{B}u_4) \\
-& =  (\overline{A}^4, \overline{A}^3\overline{B} u_1 + \overline{A}^2\overline{B} u_2 + \overline{A}\overline{B} u_3 + \overline{B} u_4) \\
-& =  (\overline{A}^4, x_4) \\
+(e_1 \cdot e_2 \cdot e_3 \cdot e_4) &= (e_1 \cdot e_2) \cdot (e_3 \cdot e_4) \\
+&=  (\overline{A}^2, \overline{A}\overline{B}x_1 + \overline{B}x_2) \cdot  (\overline{A}^2, \overline{A}\overline{B}x_3 + \overline{B}x_4) \\
+& =  (\overline{A}^4, \overline{A}^3\overline{B} x_1 + \overline{A}^2\overline{B} x_2 + \overline{A}\overline{B} x_3 + \overline{B} x_4) \\
+& =  (\overline{A}^4, h_4) \\
 \end{aligned}$$
 
 # References
@@ -345,3 +389,6 @@ space models,” Advances in Neural Information Processing Systems, vol. 35, pp.
 <a id="3">[3]</a> 
 A. Gu and T. Dao, “Mamba: Linear-time sequence modeling with selective state spaces,” arXiv
 preprint arXiv:2312.00752, 2023.
+
+<a id="4">[4]</a> 
+<a href="https://en.wikipedia.org/wiki/State-space_representation">https://en.wikipedia.org/wiki/State-space_representation</a> 
