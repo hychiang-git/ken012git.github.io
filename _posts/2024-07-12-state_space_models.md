@@ -316,8 +316,8 @@ y_2 &= C\overline{A}^2\overline{B}x_0 + C\overline{A}\overline{B}x_1 + C\overlin
 Therefore, when $$t=k$$ 
 
 $$\begin{aligned}
-h_k &= \overline{A}^k\overline{B}x_0 +...+ \overline{A}\overline{B}x_1 + \overline{B}x_2\\
-y_k &= C\overline{A}^k\overline{B}x_0 + C\overline{A}^{k-1}\overline{B}x_1 +...+ C\overline{B}x_k + Dx_k \\
+h_k &= \overline{A}^k\overline{B}x_0 +...+ \overline{A}\overline{B}x_{k-1} + \overline{B}x_k\\
+y_k &= C\overline{A}^k\overline{B}x_0 + C\overline{A}^{k-1}\overline{B}x_1 +...+ C\overline{A}\overline{B}x_{k-1} + C\overline{B}x_k + Dx_k \\
 \end{aligned}$$
 
 In other words, $$y_t$$ is a single (non-circular) convolution
