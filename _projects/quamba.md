@@ -46,7 +46,7 @@ We compared Quamba 2.8B with Mamba 2.8B on a NVIDIA Orin Nano 8G. The real-time 
 
 <br>
 # Long Input Sequences on Edge GPUs
-We compared Quamba with an 8-bit transformer on a NVIDIA Orin Nano 8G. Quamba is capable of handling long input sequences (over 8k tokens).
+We compared Quamba with an 8-bit transformer on a NVIDIA Orin Nano 8G. Quamba is capable of handling long input sequences (over 8k tokens) with limited resources on edge devices.
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include gif.html path="assets/img/projects/quamba/quamba_opt.gif" title="example image" class="img-fluid rounded z-depth-1" %}
