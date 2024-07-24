@@ -36,19 +36,28 @@ category: research
 
 <br>
 
-# Real-time Generation on a NVIDIA Orin Nano 8G
+# Real-time Generation on Edge GPUs
+We compared Quamba 2.8B with Mamba 2.8B on a NVIDIA Orin Nano 8G. Quamba (W8A8) is $$1.7\times$$ faster than Mamba (FP16) on the Nano. The real-time generation speed is shown in the demo.
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include gif.html path="assets/img/projects/quamba/quamba_demo.gif" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
+<br>
+# Long Input Sequences on Edge GPUs
+We compared Quamba with an 8-bit transformer on a NVIDIA Orin Nano 8G. Quamba is capable of handling long input sequences (over 8k tokens) with limited memory and computational resources on edge devices.
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include gif.html path="assets/img/projects/quamba/quamba_opt.gif" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+
 
 <br>
-
 # Zero-shot Accuracy
-Zero-shot accuracy of quantized models on six common sense tasks. Quamba is a static per-tensor quantization method that closes the performance gap and outperforms the same-sized
-Transformers (Pythia) in accuracy.
+Zero-shot accuracy of quantized models on six common sense tasks. Quamba is a *static per-tensor* quantization method that closes the performance gap and outperforms the same-sized
+Transformers (Pythia) in accuracy. (**Bold** is the best, and <ins>underline</ins> is the second best.)
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -57,12 +66,10 @@ Transformers (Pythia) in accuracy.
 </div>
 
 <br>
-
 # Perplexity Evaluation
-
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-    Perplexity results of different quantization methods applied on Mamba families. We evaluate the quantized models on a subset of Pile and Wikitext2 datasets. SmQ stands for SmoothQuant. Quamba is a static per-tensor quantization method that closes the performance gap in terms of perplexity and outperforms the same-sized Transformers (Pythia).
+    Perplexity results of different quantization methods applied on Mamba families. We evaluate the quantized models on a subset of Pile and Wikitext2 datasets. SmQ stands for SmoothQuant. Quamba is a <i>static per-tensor</i> quantization method that closes the performance gap in terms of perplexity and outperforms the same-sized Transformers (Pythia).
     </div>
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/projects/quamba/quamba_ppl.png" title="example image" class="img-fluid rounded z-depth-1" %}
@@ -71,15 +78,13 @@ Transformers (Pythia) in accuracy.
 
 
 <br>
-
 # Quantizing Jamba: A Large-Scale Hybrid Mamba-Transformer LLM
-
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-
-Jamba is a hybrid transformer-mamba language model with 52B parameters, built with Self-attention, Mixture of Experts (MoE), and Mamba blocks. We experiment and combine off-the-shelf quantization methods with our method. The zero-shot LAMBADA accuracy is reported.
+    Jamba is a hybrid transformer-mamba language model with <b>52B parameters</b>, built with Self-attention, Mixture of Experts (MoE), and Mamba blocks. We experiment and combine off-the-shelf quantization methods with our method. The zero-shot LAMBADA accuracy is reported.
     </div>
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.html path="assets/img/projects/quamba/quamba_jamba.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+
