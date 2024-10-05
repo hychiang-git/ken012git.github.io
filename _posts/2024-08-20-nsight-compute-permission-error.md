@@ -22,7 +22,7 @@ If you are running into this error message when using [Nsight-Compute](https://d
 6. (Optional) Check that the value is correctly set to 0: `cat /proc/driver/nvidia/params | grep RmProfilingAdminOnly`, You should see: `RmProfilingAdminOnly: 0`
 
 
-# Reference
+# References
 - [https://developer.nvidia.com/nvidia-development-tools-solutions-err_nvgpuctrperm-permission-issue-performance-counters#AllUsersTag](https://developer.nvidia.com/nvidia-development-tools-solutions-err_nvgpuctrperm-permission-issue-performance-counters#AllUsersTag)
 - [https://forums.developer.nvidia.com/t/nvprof-warning-the-user-does-not-have-permission-to-profile-on-the-target-device/72374/4](https://forums.developer.nvidia.com/t/nvprof-warning-the-user-does-not-have-permission-to-profile-on-the-target-device/72374/4)
 
