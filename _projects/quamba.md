@@ -1,22 +1,23 @@
 ---
 layout: page
 title: Quamba
-full_title: "Quamba: Post-training Quantization for Selective State Space Models"
+full_title: "Quamba: A Post-Training Quantization Recipe for Selective State Space Models"
 authors: Hung-Yueh Chiang, Chi-Chih Chang, Natalia Frumkin, Kai-Chiang Wu, Diana Marculescu
-description: Post-training Quantization for Selective State Space Models
-img: assets/img/publication_preview/quamba.jpg
+description: "Quamba: A Post-Training Quantization Recipe for Mamba"
+img: assets/img/publication_preview/quamba_blog.jpg
 importance: 1
 category: research
 ---
 
-<div style="text-align: center;">
-    <p>(Under reviewing, more details are coming soon...)</p>
-</div>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="authors"> <a href="https://hychiang.info">Hung-Yueh Chiang</a><sup><sub>*</sub>1</sup>, <a href="https://github.com/shadowpa0327">Chi-Chih Chang</a><sup><sub>*</sub>2</sup>, <a href="https://www.nfrumkin.com/">Natalia Frumkin</a><sup>1</sup>, <a href="https://people.cs.nycu.edu.tw/~kcw/">Kai-Chiang Wu</a><sup>2</sup>, <a href="https://users.ece.utexas.edu/~dianam/">Diana Marculescu</a><sup>1</sup></div>
 <div class="authors"> <sup>1</sup> The University of Texas at Austin, <sup>2</sup>National Yang Ming Chiao Tung University</div>
 <div style="text-align: center; font-family: Times;"> <sup>*</sup> Equal contribution</div>
+<div style="text-align: center; margin-top:12px;">
+    <a href="https://arxiv.org/abs/2410.13229"><i class="fa fa-file-pdf-o" style="font-size:24px;color"></i><b>Paper</b></a>
+</div>
+
 
 <br>
 <div class="row">
