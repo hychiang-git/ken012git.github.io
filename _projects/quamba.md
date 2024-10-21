@@ -89,3 +89,18 @@ Transformers (Pythia) in accuracy. (**Bold** is the best, and <ins>underline</in
     </div>
 </div>
 
+# Citation
+{% raw %}
+```latex
+@article{chiang2024quamba,
+  title={Quamba: A Post-Training Quantization Recipe for Selective State Space Models},
+  author={Chiang, Hung-Yueh and Chang, Chi-Chih and Frumkin, Natalia and Wu, Kai-Chiang and Marculescu, Diana},
+  journal={arXiv preprint arXiv:2410.13229},
+  year={2024}
+}
+```
+{% endraw %}
+
+<br>
+# Acknowledgements
+This work was supported in part by the ONR Minerva program, NSF CCF Grant No. 2107085, iMAGiNE - the Intelligent Machine Engineering Consortium at UT Austin, UT Cockrell School of Engineering Doctoral Fellowships, and Taiwan’s NSTC Grant No. 111-2221-E-A49-148-MY3.
