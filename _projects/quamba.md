@@ -15,7 +15,9 @@ category: research
 <div class="authors"> <sup>1</sup> The University of Texas at Austin, <sup>2</sup>National Yang Ming Chiao Tung University</div>
 <div style="text-align: center; font-family: Times;"> <sup>*</sup> Equal contribution</div>
 <div style="text-align: center; margin-top:12px;">
-    <a href="https://arxiv.org/abs/2410.13229"><i class="fa fa-file-pdf-o" style="font-size:24px;color"></i><b>Paper</b></a>
+    <a href="https://arxiv.org/abs/2410.13229"><i class="fa fa-file-pdf-o" style="font-size:24px;color"></i><b> Paper</b></a>
+    &nbsp;
+    <a href="https://github.com/enyac-group/Quamba"><i class="fa fa-github" style="font-size:24px;color"></i><b> Code</b></a>
 </div>
 
 
