@@ -170,6 +170,9 @@
           {%- if entry.code %}
             <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button">Code</a>
           {%- endif %}
+          {%- if entry.models %}
+            <a href="{{ entry.models }}" class="btn btn-sm z-depth-0" role="button">Models</a>
+          {%- endif %}
           {%- if entry.poster %}
             {% if entry.poster contains '://' -%}
             <a href="{{ entry.poster }}" class="btn btn-sm z-depth-0" role="button">Poster</a>
