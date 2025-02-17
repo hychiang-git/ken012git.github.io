@@ -13,12 +13,12 @@ li {
 </style>
 
 # [HALO: Hadamard-Assisted Lower-Precision Optimization for LLMs](https://arxiv.org/abs/2501.02625)
-> [TL;DR]
-> The paper proposes a quantized fine-tuning framework that exploits low bit-width matrix multiplication hardware units by performing quantization online for the inputs, weights, and outputs with Hadamard transforms.
+> [TL;DR] 
+> The paper proposes a quantized fine-tuning framework that exploits low bit-width matrix multiplication hardware units by performing quantization online for the inputs, weights, outputs, and their gradients with Hadamard transforms.
 
 ## Highlights
 - Provide and experiment with different settings: [HALO-0, HALO-1, HALO-2. Speedup: HALO-0 > HALO-1 > HALO-2, Accuracy: HALO-2 > HALO-1 > HALO-0](#halo-levels)
-- Support and experiment with different data types: FP8, INT8, and FP6, exploiting acceleration from *low bit-width matrix multiplication* hardware units
+- Support and experiment with different data types: FP8, INT8, and FP6 for forward and backward passes, exploiting acceleration from *low bit-width matrix multiplication* hardware units
 - Support Fully Sharded Data Parallel (FSDP) scheme to enable further savings by performing *low-precision communication*
 - Support full fine-tuning (FFT) and parameter-efficient fine-tuning (PEFT) methods such as LoRA
 - Demonstrate accuracy improvements on downstream tasks for LLAMA-family models in quantized fine-tuning
@@ -36,7 +36,7 @@ li {
 <br>
 - **The problem statement**: the large outliers in forward activations are difficult to represent in low bit-width data types.
 - **The solution**: The paper addresses this issue by transforming the forward activations online into a smoother space using Hadamard matrices.
-- **The quantized fine-tuning framework**: The proposed method quantizes the transformed inputs, weights, and outputs with low bit-width data types (e.g., FP8, INT8, and FP6) in an online fashion to leverage acceleration from low bit-width matrix multiplication hardware units.
+- **The quantized fine-tuning framework**: The proposed method quantizes the transformed inputs, weights, outputs, and their gradients with low bit-width data types (e.g., FP8, INT8, and FP6) in an online fashion to leverage acceleration from low bit-width matrix multiplication hardware units for forward and backward passes.
 {% include figure.html path="assets/img/posts/halo/Halo_overview.png" title="example image" class="img-fluid rounded z-depth-1" %}
 
 <br>
