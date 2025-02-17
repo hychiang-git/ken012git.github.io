@@ -17,10 +17,11 @@ li {
 > The paper proposes a quantized fine-tuning framework that exploits low bit-width matrix multiplication hardware units by performing quantization online for the inputs, weights, and outputs with Hadamard transforms.
 
 ## Highlights
-- Provide and experiment with different settings: [HALO-0, HALO-1, HALO-2. Speedup: HALO-0 > HALO-1 > HALO-2, Accuracy: HALO-2 > HALO-1 > HALO-0](#halo-levels).
-- Support and experiment with different data types: FP8, INT8, and FP6
-- The framework is applicable to parameter-efficient fine-tuning (PEFT) methods such as LoRA
-- Demonstrate real speedups in both LoRA (PEFT) and full fine-tuning (FFT) cases, along with accuracy improvements on downstream tasks
+- Provide and experiment with different settings: [HALO-0, HALO-1, HALO-2. Speedup: HALO-0 > HALO-1 > HALO-2, Accuracy: HALO-2 > HALO-1 > HALO-0](#halo-levels)
+- Support and experiment with different data types: FP8, INT8, and FP6, exploiting acceleration from *low bit-width matrix multiplication* hardware units
+- Support Fully Sharded Data Parallel (FSDP) scheme to enable further savings by performing *low-precision communication*
+- The framework is applicable to full fine-tuning (FFT) and parameter-efficient fine-tuning (PEFT) methods such as LoRA
+- Demonstrate real speedups in both FFT and PEFT cases, along with accuracy improvements on downstream tasks for LLAMA-family models
 - Will open-source the kernel implementation at [https://github.com/IST-DASLab/HALO](https://github.com/IST-DASLab/HALO)
 
 ## Summary
