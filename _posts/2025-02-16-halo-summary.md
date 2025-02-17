@@ -13,7 +13,7 @@ li {
 </style>
 
 # [HALO: Hadamard-Assisted Lower-Precision Optimization for LLMs](https://arxiv.org/abs/2501.02625)
-> TL;DR
+> [TL;DR]
 > The paper proposes a quantized fine-tuning framework that exploits low bit-width matrix multiplication hardware units by performing quantization online for the inputs, weights, and outputs with Hadamard transforms.
 
 ## Highlights
