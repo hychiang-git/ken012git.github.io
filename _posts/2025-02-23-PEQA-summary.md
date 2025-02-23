@@ -3,7 +3,7 @@ layout: post
 title: "Memory-Efficient Fine-Tuning of Compressed Large Language Models via sub-4-bit Integer Quantization"
 date: 2025-02-23
 description: "Memory-Efficient Fine-Tuning of Compressed Large Language Models via sub-4-bit Integer Quantization"
-tags: ml paper llm quantization training
+tags: ml paper llm quantization finetuning
 comments: true
 ---
 
