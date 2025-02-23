@@ -3,7 +3,7 @@ layout: post
 title: Install TigerVNC Server/Client on Ubuntu Machines
 date: 2024-06-30
 description: Install TigerVNC Server/Client on Ubuntu Machines
-tags: linux, ubuntu, commands
+tags: linux ubuntu commands
 comments: true
 ---
 # Introduction

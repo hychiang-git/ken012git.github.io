@@ -3,7 +3,7 @@ layout: post
 title: State Space Models
 date: 2024-07-11
 description: State Space Models
-tags: ml, paper, algorithm, SSM
+tags: ml paper algorithm SSM
 comments: true
 ---
 <style>

@@ -3,7 +3,7 @@ layout: post
 title: "HALO: Hadamard-Assisted Lower-Precision Optimization for LLMs"
 date: 2025-02-16
 description: "HALO: Hadamard-Assisted Lower-Precision Optimization for LLMs"
-tags: ml, paper, llm, quantization, training
+tags: ml paper llm quantization training
 comments: true
 ---
 <style>

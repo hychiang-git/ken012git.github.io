@@ -3,7 +3,7 @@ layout: post
 title: Install Nvidia Docker on Ubuntu Machines
 date: 2024-06-25
 description: Install Nvidia Docker on Ubuntu Machines
-tags: linux, ubuntu, docker, nvidia, commands
+tags: linux ubuntu docker nvidia commands
 comments: true
 ---
 

@@ -3,7 +3,7 @@ layout: post
 title: Create/Delete Users on Linux Machines
 date: 2024-06-25
 description: Create/Delete Users on Linux Machines
-tags: linux, ubuntu, commands
+tags: linux ubuntu commands
 comments: true
 ---
 # Create Users 

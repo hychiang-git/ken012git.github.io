@@ -3,7 +3,7 @@ layout: post
 title: "Solving Nsight Compute Permission Error"
 date: 2024-08-20
 description: "Solving Nsight Compute Permission Error"
-tags: linux, ubuntu, nvidia, commands
+tags: linux ubuntu nvidia commands
 comments: true
 ---
 

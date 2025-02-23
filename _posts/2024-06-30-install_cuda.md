@@ -3,7 +3,7 @@ layout: post
 title: Install/Update CUDA on Ubuntu Machines
 date: 2024-06-30
 description: Install/Update CUDA on Ubuntu Machines
-tags: linux, ubuntu, nvidia, commands
+tags: linux ubuntu nvidia commands
 comments: true
 ---
 # Introduction

@@ -3,7 +3,7 @@ layout: post
 title: "NVML: Driver/library Version Mismatch"
 date: 2024-06-30
 description: "Solving NVML: Driver/library Version Mismatch"
-tags: linux, ubuntu, nvidia, commands
+tags: linux ubuntu nvidia commands
 comments: true
 ---
 # Introduction

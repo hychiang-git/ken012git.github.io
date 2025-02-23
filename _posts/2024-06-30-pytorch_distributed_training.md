@@ -3,7 +3,7 @@ layout: post
 title: Distributed Training with Pytorch
 date: 2024-06-30
 description: Distributed Training with Pytorch
-tags: linux, ubuntu, nvidia, commands, coding, pytorch
+tags: linux ubuntu nvidia commands coding pytorch
 comments: true
 ---
 

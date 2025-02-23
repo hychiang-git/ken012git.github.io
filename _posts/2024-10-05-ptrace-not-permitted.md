@@ -3,7 +3,7 @@ layout: post
 title: "Solving `ptrace: Operation not permitted.` for GDB"
 date: 2024-10-05
 description: "Solving `ptrace: Operation not permitted.` for GDB"
-tags: linux, ubuntu, commands
+tags: linux ubuntu commands
 comments: true
 ---
 
