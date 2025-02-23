@@ -3,7 +3,7 @@ layout: post
 title: "HiPPO Matrices"
 date: 2024-07-11
 description: HiPPO Matrices
-tags: ml, algorithm, SSM
+tags: ml, paper, algorithm, SSM
 comments: true
 ---
 <style>
