@@ -22,12 +22,12 @@ li {
 - **Reduces memory** consumption during **fine-tuning** and **deployment**, making LLM adaptation feasible even for resource-constrained settings.  
 - Maintains quantization benefits post fine-tuning, ensuring **accelerated inference**.  
 - Demonstrates resilience in performance recovery, even for **sub-4-bit quantized models**, on large-scale instruction datasets.  
-- **Scales up to 65B parameter models** while achieving performance close to full-precision fine-tuning.  
+- **Scales up to 65B parameter models** while achieving performance close to full-precision LoRA fine-tuning.  
 {% include figure.html path="assets/img/posts/peqa/results_overview.png" title="PEQA Overview" class="img-fluid rounded z-depth-1" %} 
 <br>
 
 ## Summary  
-- **Problem Statement**: LLM fine-tuning is memory-intensive, even with PEFT, as full-precision weights remain a bottleneck. Quantization can reduce memory but is typically applied post-training, limiting adaptability.  
+- **Problem Statement**: LLM fine-tuning is memory-intensive, even with PEFT such as LoRA, as full-precision weights remain a bottleneck. Quantization can reduce memory but is typically applied post-training, which limits the adaptability.  
 - **Solution**: PEQA bridges this gap by fine-tuning only the *quantization scales* of a pre-quantized LLM while keeping the integer weights frozen. This enables task-specific adaptation with minimal overhead.
 - **PEQA Framework**:  
   - **Step 1 Decomposition**: Pre-trained model weights are quantized into sub-4-bit integers with associated scaling factors.
@@ -44,7 +44,7 @@ li {
 - **Optimized for low-bit integer quantization (≤ 4-bit)** while maintaining high accuracy.  
 
 #### Seamless Task Switching  
-- PEQA enables **quick and efficient adaptation** across different tasks by swapping quantization scales instead of retraining entire models.  
+- PEQA enables **quick and efficient adaptation** across different tasks by *swapping* quantization scales instead of retraining entire models.  
 
 #### Faster Inference  
 - The **frozen integer matrix remains intact**, ensuring post-fine-tuning speedup using quantized inference kernels.  
@@ -88,8 +88,8 @@ where $$\overline{\mathbf{W}}_0$$ is frozen, and $$\Delta \mathbf{s} \in \mathbb
 <br>
 
 ## Conclusion  
-PEQA presents a **memory-efficient fine-tuning** approach for quantized LLMs. By updating only the quantization scales while keeping integer matrices fixed, PEQA achieves:  
-- **Comparable accuracy to full-precision fine-tuning**  
+PEQA presents a **memory-efficient fine-tuning** approach for quantized LLMs (weight-only quantization). By updating only the quantization scales while keeping integer matrices fixed, PEQA achieves:  
+- **Comparable accuracy to full-precision PEFT methods**  
 - **Significant memory savings (up to 4× reduction)**  
 - **Seamless adaptation to new tasks**  
 - **Faster inference without additional post-processing**  
