@@ -194,6 +194,20 @@
             <a href="{{ entry.video | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Video</a>
             {%- endif %}
           {%- endif %}
+          {%- if entry.talk %}
+            {% if entry.talk contains '://' -%}
+            <a href="{{ entry.talk }}" class="btn btn-sm z-depth-0" role="button">Talk</a>
+            {%- else -%}
+            <a href="{{ entry.talk | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Talk</a>
+            {%- endif %}
+          {%- endif %}
+          {%- if entry.demo %}
+            {% if entry.demo contains '://' -%}
+            <a href="{{ entry.demo }}" class="btn btn-sm z-depth-0" role="button">Demo</a>
+            {%- else -%}
+            <a href="{{ entry.demo | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Demo</a>
+            {%- endif %}
+          {%- endif %}
           {%- if entry.website %}
             <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
           {%- endif %}
