@@ -9,7 +9,7 @@ comments: true
 
 <style>  
 li {  
-    font-size: 1.1em; /* Adjust as needed */  
+    font-size: 1.1rem; /* Adjust as needed */  
 }  
 </style>  
 
