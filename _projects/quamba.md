@@ -5,7 +5,7 @@ full_title: "Quamba: A Post-Training Quantization Recipe for Selective State Spa
 authors: Hung-Yueh Chiang, Chi-Chih Chang, Natalia Frumkin, Kai-Chiang Wu, Diana Marculescu
 description: "Quamba: A Post-Training Quantization Recipe for Mamba"
 img: assets/img/publication_preview/quamba_blog.jpg
-importance: 1
+importance: 8
 category: research
 ---
 
@@ -15,13 +15,22 @@ category: research
 <abbr class="badge" style="background-color:#00369f; margin-left:0.1rem; margin-right:0.1rem; font-size:1.1rem;">ICLR 2025</abbr>
 </div>
 
-<div class="authors"> <a href="https://hychiang.info">Hung-Yueh Chiang</a><sup><sub>*</sub>1</sup>, <a href="https://ccchang.info/">Chi-Chih Chang</a><sup><sub>*</sub>2</sup>, <a href="https://www.nfrumkin.com/">Natalia Frumkin</a><sup>1</sup>, <a href="https://people.cs.nycu.edu.tw/~kcw/">Kai-Chiang Wu</a><sup>2</sup>, <a href="https://users.ece.utexas.edu/~dianam/">Diana Marculescu</a><sup>1</sup></div>
-<div class="authors"> <sup>1</sup> The University of Texas at Austin, <sup>2</sup>National Yang Ming Chiao Tung University</div>
+<div class="authors">
+    <a href="https://hychiang.info">Hung-Yueh Chiang</a><sup><sub>*</sub>1</sup>,
+    <a href="https://ccchang.info/">Chi-Chih Chang</a><sup><sub>*</sub>2</sup>,
+    <a href="https://www.nfrumkin.com/">Natalia Frumkin</a><sup>1</sup>,
+    <a href="https://people.cs.nycu.edu.tw/~kcw/">Kai-Chiang Wu</a><sup>2</sup>,
+    <a href="https://users.ece.utexas.edu/~dianam/">Diana Marculescu</a><sup>1</sup>
+</div>
+<div class="authors">
+    <sup>1</sup>The University of Texas at Austin,
+    <sup>2</sup>National Yang Ming Chiao Tung University
+</div>
 <div style="text-align: center; font-family: Times;"> <sup>*</sup> Equal contribution</div>
+
 <div style="text-align: center; margin-top:12px;">
-    <a href="https://arxiv.org/abs/2410.13229"><i class="fa fa-file-pdf-o" style="font-size:24px;color"></i><b> Paper</b></a>
-    &nbsp;
-    <a href="https://github.com/enyac-group/Quamba"><i class="fa fa-github" style="font-size:24px;color"></i><b> Code</b></a>
+    <a href="https://arxiv.org/abs/2410.13229"><i class="fa fa-file-pdf-o" style="font-size:24px;color"></i><b> Paper</b></a>&nbsp;
+    <a href="https://github.com/enyac-group/Quamba"><i class="fa fa-github" style="font-size:24px;color"></i><b> Code</b></a>&nbsp;
     <a href="https://huggingface.co/ut-enyac"><span style="font-size: 22px;">&#129303;</span><b> Models</b></a>
 </div>
 
