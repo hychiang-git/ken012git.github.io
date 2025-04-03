@@ -113,11 +113,11 @@ Transformers (Pythia) in accuracy. (**Bold** is the best, and <ins>underline</in
 # Citation
 {% raw %}
 ```latex
-@article{chiang2024quamba,
-  title={Quamba: A Post-Training Quantization Recipe for Selective State Space Models},
-  author={Chiang, Hung-Yueh and Chang, Chi-Chih and Frumkin, Natalia and Wu, Kai-Chiang and Marculescu, Diana},
-  journal={arXiv preprint arXiv:2410.13229},
-  year={2024}
+@inproceedings{chiang2025quamba,
+  title = {Quamba: A Post-Training Quantization Recipe for Selective State Space Models},
+  author = {Chiang*, Hung-Yueh and Chang*, Chi-Chih and Frumkin, Natalia and Wu, Kai-Chiang and Marculescu, Diana},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2025},
 }
 ```
 {% endraw %}
