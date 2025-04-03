@@ -46,13 +46,14 @@ li {
 <br>
 <div style="text-align: center;">
     <p style="font-family: Comic Neue; font-size: 1.4rem;">
-    :small_red_triangle_down: <b>4<span>&#215;</span> memory reduction</b>&nbsp; &nbsp;
-    :rocket: <b>13 Token-per-second on Orin Nano 8G </b>
+    :wrench: Supports <b>W4A8 / W4A16 / W4AX / W8A8</b> for <b>Mamba1</b> and <b>Mamba2</b> <br>
+    :small_red_triangle_down: Up to <b>4<span>&#215;</span> memory reduction</b> <br>
+    :rocket: <b>13</b> Token-per-second on <b>Orin Nano 8G</b> with <b>Mamba2-8b</b>
     </p>
 </div>
 <div class="row mt-3">
-    <div class="col-sm-8 mt-3 mt-md-0 offset-2">
-        {% include figure.html path="assets/img/projects/quamba2/quamba2.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    <div class="col-sm-12 mt-3 mt-md-0 offset-0">
+        {% include figure.html path="assets/img/projects/quamba2/Quamba2.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <br>
