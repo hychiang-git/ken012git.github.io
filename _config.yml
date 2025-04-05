@@ -42,7 +42,7 @@ repo_theme_dark: dark           # https://github.com/anuraghazra/github-readme-s
 # will use title and url fields
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
-rss_icon: true
+rss_icon: false
 
 # -----------------------------------------------------------------------------
 # Layout
@@ -72,6 +72,7 @@ github_username: hychiang-git # your GitHub user name
 gitlab_username: # your GitLab user name
 twitter_username: yueh_ch # your Twitter handle
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
+dockerhub_username: hychiang
 linkedin_username: hung-yueh-chiang-25898ba3 # your LinkedIn user name
 telegram_username: # your Telegram user name
 scholar_userid: 2uTRM0MAAAAJ # your Google Scholar ID
