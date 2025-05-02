@@ -18,8 +18,8 @@ li {
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div style="text-align: center; padding-bottom: 1rem;">
-<!-- <abbr class="badge" style="background-color:#00369f; margin-left:0.1rem; margin-right:0.1rem; font-size:1.1rem;">ICLR 2025</abbr> -->
-<abbr class="badge" style="background-color:#BF5700; margin-left:0.1rem; margin-right:0.1rem; font-size:1.1rem; width:80px; display:inline-block; text-align:center;">Arxiv</abbr>
+<abbr class="badge" style="background-color:#00369f; margin-left:0.1rem; margin-right:0.1rem; font-size:1.1rem;">ICML 2025</abbr>
+<!-- <abbr class="badge" style="background-color:#BF5700; margin-left:0.1rem; margin-right:0.1rem; font-size:1.1rem; width:80px; display:inline-block; text-align:center;">Arxiv</abbr> -->
 </div>
 
 <div class="authors"> 
@@ -112,10 +112,10 @@ We search **W4A**$$X$$-mixed (the last row in red) to improve the generalization
 # Citation
 {% raw %}
 ```latex
-@article{chiang2025quamba2,
+@inproceedings{chiang2025quamba2,
   title={Quamba2: A Robust and Scalable Post-training Quantization Framework for Selective State Space Models},
   author={Chiang, Hung-Yueh and Chang, Chi-Chih and Frumkin, Natalia and Wu, Kai-Chiang, Abdelfattah, Mohamed S.  and Marculescu, Diana},
-  journal={arXiv preprint arXiv:2503.22879},
+  booktitle={International Conference on Machine Learning (ICML)},
   year={2025}
 }
 ```
