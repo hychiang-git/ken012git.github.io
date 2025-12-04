@@ -35,7 +35,7 @@ li {
 <div class="authors">
     <sup>1</sup>The University of Texas at Austin,
     <sup>2</sup>Cornell University, <br>
-    <sup>3</sup>National Yang Ming Chiao Tung University
+    <sup>3</sup>National Yang Ming Chiao Tung University,
     <sup>4</sup>University of Washington
 </div>
 <div style="text-align: center; margin-top:12px;">
