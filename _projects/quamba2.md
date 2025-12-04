@@ -5,7 +5,7 @@ full_title: "Quamba2: A Robust and Scalable Post-training Quantization Framework
 authors: Hung-Yueh Chiang, Chi-Chih Chang, Natalia Frumkin, Kai-Chiang Wu, Mohamed S. Abdelfattah, Diana Marculescu
 description: "A Quantization Framework for Selective State Space Models"
 img: assets/img/publication_preview/quamba2_blog.jpg
-importance: 1
+importance: 7
 category: research
 ---
 
