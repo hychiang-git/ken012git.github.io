@@ -3,7 +3,7 @@ layout: page
 title: ELANA
 full_title: "ELANA: A Simple Energy and Latency Analyzer for LLMs"
 authors: Hung-Yueh Chiang, Bokun Wang, Diana Marculescu
-description: "Energy and Latency Analyzern for LLMs"
+description: "A Simple Energy and Latency Analyzer for LLMs"
 img: assets/img/publication_preview/elana.png
 importance: 2
 category: research
