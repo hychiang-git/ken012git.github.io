@@ -45,7 +45,11 @@ li {
 </div>
 
 
-<br>
+<div class="row mt-3">
+    <div class="col-sm-2 mt-3 mt-md-0 offset-5">
+        {% include figure.html path="assets/img/projects/uniql/UniQL_logo.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 <div style="text-align: center;">
 <p style="font-family: Comic Neue; font-size: 1.4rem;">
     📚 Unified support Transformers, SSMs, and hybrid models <br>
