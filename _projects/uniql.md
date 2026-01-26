@@ -19,7 +19,8 @@ li {
 
 <div style="text-align: center; padding-bottom: 1rem;">
 <!-- <abbr class="badge" style="background-color:#00369f; margin-left:0.1rem; margin-right:0.1rem; font-size:1.1rem;">Arxiv</abbr> -->
-<abbr class="badge" style="background-color:#BF5700; margin-left:0.1rem; margin-right:0.1rem; font-size:1.1rem; width:80px; display:inline-block; text-align:center;">Arxiv</abbr>
+<!-- <abbr class="badge" style="background-color:#BF5700; margin-left:0.1rem; margin-right:0.1rem; font-size:1.1rem; width:80px; display:inline-block; text-align:center;">Arxiv</abbr> -->
+<abbr class="badge" style="background-color:#00369f; margin-left:0.1rem; margin-right:0.1rem; font-size:1.1rem;">ICLR 2026</abbr>
 </div>
 
 <div class="authors"> 
@@ -115,8 +116,8 @@ for deployment
 @article{chiang2025uniql,
   title={UniQL: Unified Quantization and Low-rank Compression for Adaptive Edge LLMs},
   author={Chiang, Hung-Yueh and Chang, Chi-Chih and Lu, Yu-Chen and Lin, Chien-Yu and Wu, Kai-Chiang and Abdelfattah, Mohamed S. and Marculescu, Diana},
-  journal={arXiv preprint arXiv:2512.03383},
-  year={2025},
+  booktitle={International Conference on Learning Representations (ICLR)},
+  year={2026},
 }
 
 ```
