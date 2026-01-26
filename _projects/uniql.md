@@ -113,7 +113,7 @@ for deployment
 # Citation
 {% raw %}
 ```latex
-@article{chiang2025uniql,
+@inproceedings{chiang2026uniql,
   title={UniQL: Unified Quantization and Low-rank Compression for Adaptive Edge LLMs},
   author={Chiang, Hung-Yueh and Chang, Chi-Chih and Lu, Yu-Chen and Lin, Chien-Yu and Wu, Kai-Chiang and Abdelfattah, Mohamed S. and Marculescu, Diana},
   booktitle={International Conference on Learning Representations (ICLR)},
