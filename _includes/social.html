@@ -1,3 +1,6 @@
+            {%- if site.cv_pdf -%}
+            <a href="{{ '/assets/pdf/' | append: site.cv_pdf | relative_url }}" title="Curriculum Vitae"><i class="ai ai-cv"></i></a>
+            {% endif %}
             {%- if site.email -%}
             <a href="mailto:{{ site.email | encode_email }}" title="email"><i class="fas fa-envelope"></i></a>
             {% endif %}
